@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerRay : MonoBehaviour
+public class PlayerNPCRay : MonoBehaviour
 {
     void Start()
     {
