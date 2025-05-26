@@ -6,7 +6,7 @@ public class configtest : MonoBehaviour
 {
     void Start()
     {
-        //g한글테스트
+        
     }
 
     void Update()
