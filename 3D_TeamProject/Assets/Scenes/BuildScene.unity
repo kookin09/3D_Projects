@@ -356,7 +356,6 @@ GameObject:
   - component: {fileID: 1834211916}
   - component: {fileID: 1834211918}
   - component: {fileID: 1834211919}
-  - component: {fileID: 1834211920}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -509,23 +508,6 @@ MonoBehaviour:
   moveSpeed: 5
   cameraContainer: {fileID: 1590029597}
   sensitivity: 0.1
---- !u!114 &1834211920
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1834211914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3fbaf8cb2b32cf4e8c906665931d626, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  previewPrefab: {fileID: 3495003262919039432, guid: 5da4f8b2d724ee447874777f29ab953d, type: 3}
-  buildPrefab: {fileID: 253913809115698943, guid: a6654fab6985d3f44b61d4ec4a3a9872, type: 3}
-  buildableLayer:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!1 &1844134655
 GameObject:
   m_ObjectHideFlags: 0
