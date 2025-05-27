@@ -5,11 +5,13 @@ using TMPro;
 
 public class BuildingManager : MonoBehaviour
 {
-    // B키로 건설모드 on/off
+    // 임시 (tab) 키를 눌러서 건설 메뉴를 불러옴
     // 유령(프리뷰) 오브젝트가 마우스 위치에 따라 이동/연결
     // 설치 가능 위치면 "유효" 색상, 불가능하면 "무효" 색상
     // 클릭 시 실제 건설, 연결 상태 갱신
-    // 할일 : 건설 메뉴 설정해서 바닥이랑 벽 선택 가능하게 만들기 완성
+    // 할일 : 플레이어 화면 움직임 연동 (건설 메뉴 열었을 때 화면이 돌아가지 않게끔 설정해주기)
+    //        가구 추가해보기 (작업대도 만들어야 할것 같네...)
+    //        아이템 구현 완성되면 연동해서 재료 소모방식 추가
 
     [Header("건축 물체")]
     [SerializeField] private List<GameObject> floorObjects = new List<GameObject>();
@@ -54,7 +56,7 @@ public class BuildingManager : MonoBehaviour
         {
             GhostBuild();   // 프리뷰(유령) 건축물 처리
 
-            // 마우스 왼쪽 클릭 시 건설 시도(나중에 유니티 input system 으로 변경 예정)
+            // 마우스 왼쪽 클릭 시 건설 시도
             if (Input.GetMouseButtonDown(0))
                 PlaceBuild();
         }
