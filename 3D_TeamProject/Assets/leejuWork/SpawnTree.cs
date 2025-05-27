@@ -36,6 +36,8 @@ public class SpawnTree : MonoBehaviour
 
     void Update()
     {
+        //코루틴은 나중에 추가할것 인벤토리 우선 구현
+        //임시로 최대 스폰개수 5개까지로만 방어코드
         if (CurTreeCount <= MaxTreeCount)
         {
             SpawnTreeLogic();
@@ -55,6 +57,8 @@ public class SpawnTree : MonoBehaviour
 
         //계산된 정보를 바탕으로 씬에 오브젝트 생성
         Instantiate(TreePrefab, ConfirmTreePos, Quaternion.identity);
+        
+        //현재 생성된 나무의 개수를 생성될때마다 1씩 증가
         CurTreeCount += 1;
     }
 }
