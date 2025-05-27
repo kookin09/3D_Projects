@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:3D_TeamProject/Assets/Enemy.cs.meta
 guid: c660bb02729820f48a955da818180a66
+========
+guid: e8432a5b7c96b6c4c9ee05b2dcb5dc0c
+>>>>>>>> CDH_Branch:3D_TeamProject/Assets/CDH_Work/Player/PlayerController.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
