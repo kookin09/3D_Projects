@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class BuildingManager : MonoBehaviour
 {
@@ -9,7 +10,6 @@ public class BuildingManager : MonoBehaviour
     // 설치 가능 위치면 "유효" 색상, 불가능하면 "무효" 색상
     // 클릭 시 실제 건설, 연결 상태 갱신
     // 할일 : 건설 메뉴 설정해서 바닥이랑 벽 선택 가능하게 만들기
-    //        이동하는 플레이어 가져와서 잘 작동하는지 확인 필요
 
     [Header("Build Objects")]
     [SerializeField] private List<GameObject> floorObjects = new List<GameObject>();
@@ -37,14 +37,16 @@ public class BuildingManager : MonoBehaviour
     private bool isGhostInValidPosition = false;
     private Transform ModelParent = null;
 
+    [Header("UI")]
+    [SerializeField] private GameObject buildingUI;
+    [SerializeField] private TMP_Text destroyText;
+
     private void Update()
     {
-        // B 키로 건설 모드 on/off 전환
-        if (Input.GetKeyDown(KeyCode.B))
-            isBuilding = !isBuilding;
-
-        if (Input.GetKeyDown(KeyCode.V))
-            isDestroying = !isDestroying;
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            ToggleBuildingUI(!buildingUI.activeInHierarchy);
+        }
 
         // 건설 모드일 때
         if (isBuilding && !isDestroying)
@@ -320,7 +322,7 @@ public class BuildingManager : MonoBehaviour
             Destroy(ghostBuildGameObject);
             ghostBuildGameObject = null;
 
-            isBuilding = false;
+            //isBuilding = false;
 
             // 새로 설치한 오브젝트의 연결 상태 갱신
             foreach (Connector connector in newBuild.GetComponentsInChildren<Connector>())
@@ -330,38 +332,42 @@ public class BuildingManager : MonoBehaviour
         }
     }
 
+    // 마우스 위치 기준으로 삭제 가능한 오브젝트(빌드) 미리보기 처리
     private void GhostDestroy()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
-            if (hit.transform.root.CompareTag("Buildables"))
+            if (hit.transform.root.CompareTag("Buildables"))    // Buildables 태그를 가진 오브젝트 위에 있을 때
             {
-                if (!lastHitDestroyTransfrom)
+                if (!lastHitDestroyTransfrom)                   // 처음으로 삭제 대상 감지 시
                 {
                     lastHitDestroyTransfrom = hit.transform.root;
 
+                    // 원래 머티리얼 저장
                     LastHitMaterials.Clear();
                     foreach (MeshRenderer lastHitMeshRenderers in lastHitDestroyTransfrom.GetComponentsInChildren<MeshRenderer>())
                     {
                         LastHitMaterials.Add(lastHitMeshRenderers.material);
                     }
 
+                    // 삭제 미리보기: 유령 머티리얼(Invalid)로 변경
                     GhostifyModel(lastHitDestroyTransfrom.GetChild(0), ghostMaterialInvalid);
                 }
-                else if (hit.transform.root != lastHitDestroyTransfrom)
+                else if (hit.transform.root != lastHitDestroyTransfrom)     // 삭제 대상이 바뀌면 원상복귀
                 {
                     ResetLastHitDestroyTransfrom();
                 }
             }
-            else if (lastHitDestroyTransfrom)
+            else if (lastHitDestroyTransfrom)                               // 빌드 오브젝트가 아니거나 커서가 벗어나면 원상복귀
             {
                 ResetLastHitDestroyTransfrom();
             }
         }
     }
 
+    // 마지막으로 삭제 미리보기 적용했던 오브젝트의 머티리얼 복원
     private void ResetLastHitDestroyTransfrom()
     {
         int counter = 0;
@@ -374,21 +380,78 @@ public class BuildingManager : MonoBehaviour
         lastHitDestroyTransfrom = null;
     }
 
+    // 실제로 빌드 오브젝트를 삭제하는 함수
     private void DestroyBuild()
     {
         if (lastHitDestroyTransfrom)
         {
+            // 삭제 대상의 모든 Connector 비활성화 및 상태 갱신
             foreach (Connector connector in lastHitDestroyTransfrom.GetComponentsInChildren<Connector>())
             {
                 connector.gameObject.SetActive(false);
                 connector.UpdateConnectors(true);
             }
 
+            // 오브젝트 삭제
             Destroy(lastHitDestroyTransfrom.gameObject);
 
-            isDestroying = false;
+            // 파괴 모드 토글(Off) 및 상태 초기화
+            DestroyBuildingToggle(true);
             lastHitDestroyTransfrom = null;
         }
+    }
+
+    // 건설 관련 UI(패널 등) 토글, 커서 표시 등 관리
+    public void ToggleBuildingUI(bool active)
+    {
+        isBuilding = false;
+
+        buildingUI.SetActive(active);
+
+        // 카메라 움직임 멈춤 필요
+
+        // 커서 활성화/비활성화 (화면 움직이 추가되면 사용될 코드)
+        //Cursor.visible = active;
+        //Cursor.lockState = active ? CursorLockMode.None : CursorLockMode.Locked;
+    }
+
+    // 파괴 모드 on/off 스위치 관리 (UI 갱신 포함)
+    public void DestroyBuildingToggle(bool fromScript = false)
+    {
+        if (fromScript)
+        {
+            isDestroying = false;
+            destroyText.text = "Destroy Off";
+            destroyText.color = Color.green;
+        }
+        else
+        {
+            isDestroying = !isDestroying;
+            destroyText.text = isDestroying ? "Destroy On" : "Destroy Off";
+            destroyText.color = isDestroying ? Color.red : Color.green;
+            ToggleBuildingUI(false);
+        }
+    }
+
+    // 버튼 클릭 등으로 건축 타입 변경 (Floor, Wall 등)
+    public void ChangeBuildTypeButton(string selectedBuildType)
+    {
+        if (System.Enum.TryParse(selectedBuildType, out SelectedBuildType result))
+        {
+            currentBuildType = result;
+        }
+        else
+        {
+            Debug.Log("건축 유형이 없습니다");
+        }
+    }
+
+    public void StartBuildingButton(int buildIndex)
+    {
+        currentBuildingIndex = buildIndex;
+        ToggleBuildingUI(false);
+
+        isBuilding = true;
     }
 }
 
