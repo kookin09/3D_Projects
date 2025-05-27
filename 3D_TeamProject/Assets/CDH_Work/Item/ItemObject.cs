@@ -19,5 +19,7 @@ public class ItemObject : MonoBehaviour
     public void OnInteract()
     {
         CharacterManager.Instance.Player.itemData = data;
+        CharacterManager.Instance.Player.addItem?.Invoke();
+        Destroy(gameObject);
     }
 }
