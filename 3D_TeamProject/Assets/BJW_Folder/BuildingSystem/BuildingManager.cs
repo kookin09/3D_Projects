@@ -9,28 +9,28 @@ public class BuildingManager : MonoBehaviour
     // 유령(프리뷰) 오브젝트가 마우스 위치에 따라 이동/연결
     // 설치 가능 위치면 "유효" 색상, 불가능하면 "무효" 색상
     // 클릭 시 실제 건설, 연결 상태 갱신
-    // 할일 : 건설 메뉴 설정해서 바닥이랑 벽 선택 가능하게 만들기
+    // 할일 : 건설 메뉴 설정해서 바닥이랑 벽 선택 가능하게 만들기 완성
 
-    [Header("Build Objects")]
+    [Header("건축 물체")]
     [SerializeField] private List<GameObject> floorObjects = new List<GameObject>();
     [SerializeField] private List<GameObject> wallObjects = new List<GameObject>();
 
-    [Header("Build Settings")]
+    [Header("건축 설정")]
     [SerializeField] private SelectedBuildType currentBuildType;
     [SerializeField] private LayerMask connectorLayer;
 
-    [Header("Destroy Settings")]
+    [Header("건축 해제 설정")]
     [SerializeField] private bool isDestroying = false;
     private Transform lastHitDestroyTransfrom;
     private List<Material> LastHitMaterials = new List<Material>();
 
-    [Header("Ghost Settings")]
+    [Header("프리뷰 설정")]
     [SerializeField] private Material ghostMaterialValid;
     [SerializeField] private Material ghostMaterialInvalid;
     [SerializeField] private float connectorOverlapRadious = 1f;
     [SerializeField] private float maxGroundAngle = 45f;    // 90도 가능
 
-    [Header("Internal State")]
+    [Header("Internal State 내적 상태")]
     [SerializeField] private bool isBuilding = false;
     [SerializeField] private int currentBuildingIndex;
     private GameObject ghostBuildGameObject;
@@ -43,6 +43,7 @@ public class BuildingManager : MonoBehaviour
 
     private void Update()
     {
+        // input system 으로 추후 변경
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             ToggleBuildingUI(!buildingUI.activeInHierarchy);
