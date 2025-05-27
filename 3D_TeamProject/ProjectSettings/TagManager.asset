@@ -13,11 +13,11 @@ TagManager:
   - Water
   - UI
   - Ground
-  - NPC
+  - 
   - Interactable
-  - 
-  - 
-  - 
+  - NPC1
+  - NPC2
+  - NPC3
   - 
   - ground
   - 
@@ -38,7 +38,6 @@ TagManager:
   - 
   - 
   - 
-  - BuildingSphere
   m_SortingLayers:
   - name: Default
     uniqueID: 0

@@ -132,12 +132,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 247959435}
+  - component: {fileID: 247959437}
   - component: {fileID: 247959436}
   - component: {fileID: 247959434}
   - component: {fileID: 247959433}
   - component: {fileID: 247959432}
   - component: {fileID: 247959431}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: NPCTest2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +170,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!65 &247959432
 BoxCollider:
@@ -270,6 +271,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npcDialogue: NPC2
+--- !u!114 &247959437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247959430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b768ad2e00002e479ad0f06f0d58f18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &353287703
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,7 +443,7 @@ MonoBehaviour:
   NPCrayDistance: 3
   NPCLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 3584
   NPCText: {fileID: 554562543}
 --- !u!1 &362422943
 GameObject:
@@ -683,7 +696,7 @@ GameObject:
   - component: {fileID: 979115020}
   - component: {fileID: 979115019}
   - component: {fileID: 979115018}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: NPCTest1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -715,7 +728,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!65 &979115019
 BoxCollider:
@@ -1104,12 +1117,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1989308175}
-  - component: {fileID: 1989308174}
+  - component: {fileID: 1989308177}
   - component: {fileID: 1989308176}
+  - component: {fileID: 1989308174}
   - component: {fileID: 1989308173}
   - component: {fileID: 1989308172}
   - component: {fileID: 1989308171}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: NPCTest3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1141,7 +1155,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!65 &1989308172
 BoxCollider:
@@ -1242,6 +1256,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npcDialogue: NPC3
+--- !u!114 &1989308177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989308170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b768ad2e00002e479ad0f06f0d58f18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
