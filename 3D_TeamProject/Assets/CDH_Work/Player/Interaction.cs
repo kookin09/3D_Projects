@@ -13,11 +13,11 @@ public class Interaction : MonoBehaviour
     private IInteractable curInteractable;
 
     public TextMeshProUGUI promptText;
-    private Camera camera;
+    private Camera _camera;
 
     void Start()
     {
-        camera = Camera.main;
+        _camera = Camera.main;
     }
 
     void Update()
@@ -26,7 +26,7 @@ public class Interaction : MonoBehaviour
         {
             lastCheckTime = Time.time;
 
-            Ray ray = camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));        //      카메라의 정 중앙에 물체 식별을 위한 Ray 발사
+            Ray ray = _camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));        //      카메라의 정 중앙에 물체 식별을 위한 Ray 발사
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, maxCheckDistance, layerMask))
@@ -41,8 +41,7 @@ public class Interaction : MonoBehaviour
             else
             {
                 curInteractGameObject = null;
-                curInteractable = null;
-                promptText.gameObject.SetActive(false);
+                curInteractable = null;  
             }
         }
     }

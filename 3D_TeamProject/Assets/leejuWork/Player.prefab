@@ -218,4 +218,4 @@ MonoBehaviour:
   jumpPower: 5
   groundLayerMask:
     serializedVersion: 2
-    m_Bits: 4096
+    m_Bits: 0
