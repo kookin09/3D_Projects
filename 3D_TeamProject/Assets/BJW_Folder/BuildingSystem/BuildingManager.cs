@@ -19,6 +19,11 @@ public class BuildingManager : MonoBehaviour
     [SerializeField] private SelectedBuildType currentBuildType;
     [SerializeField] private LayerMask connectorLayer;
 
+    [Header("Destroy Settings")]
+    [SerializeField] private bool isDestroying = false;
+    private Transform lastHitDestroyTransfrom;
+    private List<Material> LastHitMaterials = new List<Material>();
+
     [Header("Ghost Settings")]
     [SerializeField] private Material ghostMaterialValid;
     [SerializeField] private Material ghostMaterialInvalid;
@@ -38,8 +43,11 @@ public class BuildingManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.B))
             isBuilding = !isBuilding;
 
+        if (Input.GetKeyDown(KeyCode.V))
+            isDestroying = !isDestroying;
+
         // 건설 모드일 때
-        if (isBuilding)
+        if (isBuilding && !isDestroying)
         {
             GhostBuild();   // 프리뷰(유령) 건축물 처리
 
@@ -51,6 +59,14 @@ public class BuildingManager : MonoBehaviour
         {
             Destroy(ghostBuildGameObject);
             ghostBuildGameObject = null;
+        }
+
+        if (isDestroying)
+        {
+            GhostDestroy();
+
+            if (Input.GetMouseButtonDown(0))
+                DestroyBuild();
         }
     }
 
@@ -102,6 +118,20 @@ public class BuildingManager : MonoBehaviour
         {
             // 연결 불가(분리된) 상태 처리
             GhostSeperateBuild();
+
+            if (isGhostInValidPosition)
+            {
+                Collider[] overlapColliders = Physics.OverlapBox(ghostBuildGameObject.transform.position, new Vector3(2f, 2f, 2f), ghostBuildGameObject.transform.rotation);
+                foreach (Collider overlapCollider in overlapColliders)
+                {
+                    if (overlapCollider.gameObject != ghostBuildGameObject && overlapCollider.transform.root.CompareTag("Buildables"))
+                    {
+                        GhostifyModel(ModelParent, ghostMaterialInvalid);
+                        isGhostInValidPosition = false;
+                        return;
+                    }
+                }
+            }
         }
     }
 
@@ -165,15 +195,7 @@ public class BuildingManager : MonoBehaviour
                 GhostifyModel(ModelParent, ghostMaterialInvalid);
                 isGhostInValidPosition = false;
                 return;
-            }
-
-            // 이미 건설된 오브젝트 위에는 설치 불가
-            if (hit.collider.transform.root.CompareTag("Buildables"))
-            {
-                GhostifyModel(ModelParent, ghostMaterialInvalid);
-                isGhostInValidPosition = false;
-                return;
-            }
+            }           
 
             // 바닥 각도(경사도) 검사: 설정된 최대 각도 이하면 설치 가능
             if (Vector3.Angle(hit.normal, Vector3.up) < maxGroundAngle)
@@ -289,7 +311,7 @@ public class BuildingManager : MonoBehaviour
     // 실제 건설(배치) 처리
     private void PlaceBuild()
     {
-        if (ghostBuildGameObject != null & isGhostInValidPosition)
+        if (ghostBuildGameObject != null && isGhostInValidPosition)
         {
             // 프리뷰 위치에 실제 오브젝트 생성
             GameObject newBuild = Instantiate(GetCurrentBuild(), ghostBuildGameObject.transform.position, ghostBuildGameObject.transform.rotation);
@@ -305,6 +327,67 @@ public class BuildingManager : MonoBehaviour
             {
                 connector.UpdateConnectors(true);
             }
+        }
+    }
+
+    private void GhostDestroy()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
+        {
+            if (hit.transform.root.CompareTag("Buildables"))
+            {
+                if (!lastHitDestroyTransfrom)
+                {
+                    lastHitDestroyTransfrom = hit.transform.root;
+
+                    LastHitMaterials.Clear();
+                    foreach (MeshRenderer lastHitMeshRenderers in lastHitDestroyTransfrom.GetComponentsInChildren<MeshRenderer>())
+                    {
+                        LastHitMaterials.Add(lastHitMeshRenderers.material);
+                    }
+
+                    GhostifyModel(lastHitDestroyTransfrom.GetChild(0), ghostMaterialInvalid);
+                }
+                else if (hit.transform.root != lastHitDestroyTransfrom)
+                {
+                    ResetLastHitDestroyTransfrom();
+                }
+            }
+            else if (lastHitDestroyTransfrom)
+            {
+                ResetLastHitDestroyTransfrom();
+            }
+        }
+    }
+
+    private void ResetLastHitDestroyTransfrom()
+    {
+        int counter = 0;
+        foreach (MeshRenderer lastHitMeshRenderers in lastHitDestroyTransfrom.GetComponentsInChildren<MeshRenderer>())
+        {
+            lastHitMeshRenderers.material = LastHitMaterials[counter];
+            counter++;
+        }
+
+        lastHitDestroyTransfrom = null;
+    }
+
+    private void DestroyBuild()
+    {
+        if (lastHitDestroyTransfrom)
+        {
+            foreach (Connector connector in lastHitDestroyTransfrom.GetComponentsInChildren<Connector>())
+            {
+                connector.gameObject.SetActive(false);
+                connector.UpdateConnectors(true);
+            }
+
+            Destroy(lastHitDestroyTransfrom.gameObject);
+
+            isDestroying = false;
+            lastHitDestroyTransfrom = null;
         }
     }
 }

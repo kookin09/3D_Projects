@@ -38,6 +38,11 @@ public class Connector : MonoBehaviour
                 continue;
             }
 
+            if (!collider.gameObject.activeInHierarchy)
+            {
+                continue;
+            }
+
             // 같은 레이어의 오브젝트만 연결 대상으로 삼음
             if (collider.gameObject.layer == gameObject.layer)
             {
