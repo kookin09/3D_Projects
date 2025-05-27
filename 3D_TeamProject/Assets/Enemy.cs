@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,10 +8,10 @@ public enum AIState
 {
     Idle,
     Wandering,
-    Attaking
+    Attacking
 }
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IDamagable
 {
     [Header("Stats")]
     public int health;
@@ -56,7 +57,7 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         //플레이어와 거리계산
-        //playerDistance = Vector3.Distance(transform.position,)
+        playerDistance = Vector3.Distance(transform.position, CharacterManager.Instance.Player.transform.position);
 
         animator.SetBool("Moving", aiState != AIState.Idle);
 
@@ -66,7 +67,7 @@ public class Enemy : MonoBehaviour
             case AIState.Wandering:
                 PassiveUpdate();
                 break;
-            case AIState.Attaking:
+            case AIState.Attacking:
                 AttackingUpdate();
                 break;
         }
@@ -86,7 +87,7 @@ public class Enemy : MonoBehaviour
                 agent.speed = walkSpeed;
                 agent.isStopped = false;
                 break;
-            case AIState.Attaking:
+            case AIState.Attacking:
                 agent.speed = runSpeed;
                 agent.isStopped = false;
                 break;
@@ -97,20 +98,118 @@ public class Enemy : MonoBehaviour
 
     void PassiveUpdate()
     {
-        if(aiState == AIState.Wandering && agent.remainingDistance < 0.1f)
+        if (aiState == AIState.Wandering && agent.remainingDistance < 0.1f)
         {
             SetState(AIState.Idle);
             Invoke("WanderToNewLocation", Random.Range(minWanderWaitTime, maxWanderWaitTime));
+        }
+
+        if (playerDistance < detectDistance)
+        {
+            SetState(AIState.Attacking);
         }
     }
 
     void WanderToNewLocation()
     {
-        //if(aiState )
+        if (aiState != AIState.Idle) return;
+
+        SetState(AIState.Wandering);
+        agent.SetDestination(GetWanderLocation());
+    }
+
+    Vector3 GetWanderLocation()
+    {
+        NavMeshHit hit;
+
+        NavMesh.SamplePosition(transform.position + (Random.onUnitSphere * Random.Range(minWanderDistance, maxWanderDistance)), out hit, maxWanderDistance, NavMesh.AllAreas);
+
+        int i = 0;
+
+        while (Vector3.Distance(transform.position, hit.position) < detectDistance)
+        {
+            NavMesh.SamplePosition(transform.position + (Random.onUnitSphere * Random.Range(minWanderDistance, maxWanderDistance)), out hit, maxWanderDistance, NavMesh.AllAreas);
+            i++;
+            if (i == 30) break;
+        }
+
+        return hit.position;
     }
 
     void AttackingUpdate()
     {
+        if (playerDistance < attackDistance && IsPlayerInFieldOfView())
+        {
+            agent.isStopped = true;
+            if (Time.time - lastAttackTime > attackRate)
+            {
+                lastAttackTime = Time.time;
+                CharacterManager.Instance.Player.condition.GetComponent<IDamagable>().TakePhysicalDamage(damage);
+                animator.speed = 1;
+                animator.SetTrigger("Attack");
+            }
+        }
+        else
+        {
+            if (playerDistance < detectDistance)
+            {
+                agent.isStopped = false;
+                NavMeshPath path = new NavMeshPath();
+                if (agent.CalculatePath(CharacterManager.Instance.Player.transform.position, path))
+                {
+                    agent.SetDestination(CharacterManager.Instance.Player.transform.position);
+                }
+                else
+                {
+                    agent.SetDestination(transform.position);
+                    agent.isStopped = true;
+                    SetState(AIState.Wandering);
+                }
+            }
+            else
+            {
+                agent.SetDestination(transform.position);
+                agent.isStopped = true;
+                SetState(AIState.Wandering);
+            }
+        }
+    }
 
+    bool IsPlayerInFieldOfView()
+    {
+        Vector3 directionToPlayer = CharacterManager.Instance.Player.transform.position - transform.position;
+        float angle = Vector3.Angle(transform.forward, directionToPlayer);
+        return angle < fieldOfView * 0.5f;
+    }
+
+    public void TakePhysicalDamage(int damage)
+    {
+        health -= damage;
+        if(health <= 0)
+        {
+            Die();
+        }
+
+        StartCoroutine(DamageFlash());
+    }
+
+    void Die()
+    {
+        Destroy(gameObject);
+    }
+
+    IEnumerator DamageFlash()
+    {
+        for(int i = 0; i < meshRenderers.Length; i++)
+        {
+            meshRenderers[i].material.color = new Color(1.0f, 0.6f, 0.6f);
+        }
+
+        yield return new WaitForSeconds(0.1f);
+
+        for(int i = 0; i < meshRenderers.Length; i++)
+        {
+            meshRenderers[i].material.color = Color.white;
+        }
     }
 }
