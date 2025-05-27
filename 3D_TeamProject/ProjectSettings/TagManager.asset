@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Buildables
   layers:
   - Default
   - TransparentFX
@@ -14,6 +15,7 @@ TagManager:
   - Ground
   - NPC
   - Interactable
+  - 
   - 
   - 
   - 
@@ -36,7 +38,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - BuildingSphere
   m_SortingLayers:
   - name: Default
     uniqueID: 0
