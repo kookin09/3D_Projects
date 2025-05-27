@@ -59,6 +59,7 @@ public class PlayerMove : MonoBehaviour
         if (context.phase == InputActionPhase.Started && IsGround())
         {
             rb.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
+            CharacterManager.Instance.Player.condition.UseStamina(30f);     //      점프 시 스태미나 30 수치만큼 감소
             Debug.Log("점프");
         }
     }
