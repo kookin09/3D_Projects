@@ -16,6 +16,7 @@ public class BuildingManager : MonoBehaviour
     [Header("건축 물체")]
     [SerializeField] private List<GameObject> floorObjects = new List<GameObject>();
     [SerializeField] private List<GameObject> wallObjects = new List<GameObject>();
+    [SerializeField] private List<GameObject> furnitureObjects = new List<GameObject>();
 
     [Header("건축 설정")]
     [SerializeField] private SelectedBuildType currentBuildType;
@@ -112,6 +113,13 @@ public class BuildingManager : MonoBehaviour
 
     private void CheckBuildValidity()
     {
+        // 가구 배치
+        if (currentBuildType == SelectedBuildType.Furniture)
+        {
+            GhostFurnitureBuild();
+            return;
+        }
+
         // 프리뷰 오브젝트 주변에 연결 가능한 Connector 있는지 확인
         Collider[] colliders = Physics.OverlapSphere(ghostBuildGameObject.transform.position, connectorOverlapRadious, connectorLayer);
         if (colliders.Length > 0)
@@ -308,6 +316,8 @@ public class BuildingManager : MonoBehaviour
                 return floorObjects[currentBuildingIndex];
             case SelectedBuildType.Wall:
                 return wallObjects[currentBuildingIndex];
+            case SelectedBuildType.Furniture:
+                return furnitureObjects[currentBuildingIndex];
         }
 
         return null;
@@ -456,11 +466,39 @@ public class BuildingManager : MonoBehaviour
 
         isBuilding = true;
     }
+
+    private void GhostFurnitureBuild()
+    {
+        // 바닥에만 놓을 수 있도록 Raycast 사용
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
+        {
+            ghostBuildGameObject.transform.position = hit.point;
+
+            if (Vector3.Angle(hit.normal, Vector3.up) < maxGroundAngle)
+            {
+                GhostifyModel(ModelParent, ghostMaterialValid);
+                isGhostInValidPosition = true;
+            }
+            else
+            {
+                GhostifyModel(ModelParent, ghostMaterialInvalid);
+                isGhostInValidPosition = false;
+            }
+        }
+        else
+        {
+            GhostifyModel(ModelParent, ghostMaterialInvalid);
+            isGhostInValidPosition = false;
+        }
+    }
 }
 
 [System.Serializable]
 public enum SelectedBuildType
 {
     Floor,
-    Wall
+    Wall,
+    Furniture
 }
