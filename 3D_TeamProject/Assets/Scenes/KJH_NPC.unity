@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 247959435}
   - component: {fileID: 247959437}
+  - component: {fileID: 247959438}
   - component: {fileID: 247959436}
   - component: {fileID: 247959434}
   - component: {fileID: 247959433}
@@ -270,7 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d47f63557f4cae448e16326179a1570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npcDialogue: NPC2
+  npcDialogue: NPC2(F)
 --- !u!114 &247959437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,7 +284,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b768ad2e00002e479ad0f06f0d58f18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue1: {fileID: 0}
+  dialogue1: {fileID: 247959438}
+--- !u!114 &247959438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247959430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbd6afa18ebd1fc41b44a9c2672beff1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NPCDialogue: {fileID: 988938036}
+  DialoguePannel: {fileID: 331169328}
+  dialogueText: {fileID: 988938036}
+  dialogues:
+  - "\uC548\uB155\uD558\uC2ED\uB2C8\uAE4C"
+  - "NPC2 \uC785\uB2C8\uB2E4"
+  - "\u3141\u3134\u3147\u313B\u3134\u3147\u313B\u3134\u3147\u313B\u3134\u3147\u313B\u3134\u3147\u313B"
 --- !u!1 &331169327
 GameObject:
   m_ObjectHideFlags: 0
@@ -684,8 +704,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: none
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c777cd116c0e8a04d9c513c76101b56f, type: 2}
+  m_sharedMaterial: {fileID: -7600746254692941870, guid: c777cd116c0e8a04d9c513c76101b56f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -768,10 +788,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 979115022}
-  - component: {fileID: 979115021}
   - component: {fileID: 979115024}
   - component: {fileID: 979115025}
   - component: {fileID: 979115023}
+  - component: {fileID: 979115021}
   - component: {fileID: 979115020}
   - component: {fileID: 979115019}
   - component: {fileID: 979115018}
@@ -907,7 +927,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d47f63557f4cae448e16326179a1570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npcDialogue: NPC1
+  npcDialogue: NPC1(F)
 --- !u!114 &979115024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -937,9 +957,13 @@ MonoBehaviour:
   DialoguePannel: {fileID: 331169328}
   dialogueText: {fileID: 988938036}
   dialogues:
-  - ddfsdfs
-  - sdfsdfsdfs
-  - sdfsdfsdfsdfsdsfs
+  - "\uC548\uB155\uD558\uC138\uC694"
+  - "NPC1\uC785\uB2C8\uB2E4"
+  - "\uC774\uB807\uAC8C"
+  - "\uB300\uC0AC\uB97C"
+  - "\uCD9C\uB825\uD560\uAEC0\uB370"
+  - "\uC0DD\uAC01\uBCF4\uB2E4 UI\uAC00"
+  - "\uB108\uBB34 \uBCC4\uB860\uB370?"
 --- !u!1 &988938034
 GameObject:
   m_ObjectHideFlags: 0
@@ -997,9 +1021,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: sdadsasdada
+  m_text: "\uC5C6\uC74C"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c777cd116c0e8a04d9c513c76101b56f, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1030,7 +1054,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -1063,7 +1087,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &988938037
@@ -1351,6 +1375,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1989308175}
   - component: {fileID: 1989308177}
+  - component: {fileID: 1989308178}
   - component: {fileID: 1989308176}
   - component: {fileID: 1989308174}
   - component: {fileID: 1989308173}
@@ -1488,7 +1513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d47f63557f4cae448e16326179a1570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npcDialogue: NPC3
+  npcDialogue: NPC3(F)
 --- !u!114 &1989308177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1502,6 +1527,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue1: {fileID: 0}
+--- !u!114 &1989308178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989308170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbd6afa18ebd1fc41b44a9c2672beff1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NPCDialogue: {fileID: 988938036}
+  DialoguePannel: {fileID: 331169328}
+  dialogueText: {fileID: 988938036}
+  dialogues:
+  - "\uB300\uC0AC 1"
+  - "\uB300\uC0AC 2"
+  - "\uB300\uC0AC 3"
+  - "\uB300\uC0AC 4"
+  - "\uB300\uC0AC 5"
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
