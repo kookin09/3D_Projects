@@ -26,8 +26,10 @@ public class Interaction : MonoBehaviour
         {
             lastCheckTime = Time.time;
 
-            Ray ray = _camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));        //      카메라의 정 중앙에 물체 식별을 위한 Ray 발사
+            Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
             RaycastHit hit;
+
+            Debug.DrawRay(ray.origin, ray.direction * maxCheckDistance, Color.red, checkRate);
 
             if (Physics.Raycast(ray, out hit, maxCheckDistance, layerMask))
             {
@@ -41,7 +43,8 @@ public class Interaction : MonoBehaviour
             else
             {
                 curInteractGameObject = null;
-                curInteractable = null;  
+                curInteractable = null;
+                promptText.gameObject.SetActive(false);
             }
         }
     }
@@ -54,6 +57,12 @@ public class Interaction : MonoBehaviour
 
     public void OnInteractInput(InputAction.CallbackContext context)
     {
-
+        if (context.phase == InputActionPhase.Started && curInteractable != null)
+        {
+            curInteractable.OnInteract();
+            curInteractGameObject = null;
+            curInteractable = null;
+            promptText.gameObject.SetActive(false);
+        }
     }
 }
