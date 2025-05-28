@@ -13,7 +13,6 @@ public class UIInventory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       inventoryWindow.SetActive(false);
         slots = new ItemSlot[slotPanel.childCount];
 
         for(int i = 0; i < slots.Length; i++)
@@ -22,9 +21,9 @@ public class UIInventory : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+       
     }
+   
 }
