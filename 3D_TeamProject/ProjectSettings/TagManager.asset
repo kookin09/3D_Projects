@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Buildables
+  - Connector
   layers:
   - Default
   - TransparentFX
