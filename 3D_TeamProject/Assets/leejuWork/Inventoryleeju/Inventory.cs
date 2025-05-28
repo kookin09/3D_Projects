@@ -95,9 +95,22 @@ public class Inventory : MonoBehaviour
                 }
             }
         }
-        else
+        //canstack이 체크 해제되어있을 때 !itemSO.canStack
+        else 
         {
-            return false;
+            //슬롯 스캔 한번 땡기고
+            for (int i = 0; i < AssignPlace.Count; i++)
+            {
+                //비어있는 슬롯 찾으면
+                if (AssignPlace[i].itemInfo == null)
+                {
+                    //아이템 저장하고
+                    AssignPlace[i].itemInfo = itemSO;
+                    //개수 지정
+                    AssignPlace[i].CurItemStack = getItemStack;
+                    return true;
+                }
+            }
         }
         return false;
     }
