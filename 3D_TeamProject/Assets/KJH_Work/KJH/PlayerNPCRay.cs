@@ -26,16 +26,15 @@ public class PlayerNPCRay : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, NPCrayDistance, NPCLayer)) // NPC 감지
         {
-            NPCDialogue npc = hit.collider.GetComponent<NPCDialogue>();
+            NPCUI npc = hit.collider.GetComponent<NPCUI>(); //오브젝트에 붙은 NPCUI 스크립트 찾기
             if (npc != null)
             {
                 NPCText.text = npc.npcDialogue;
                 NPCText.gameObject.SetActive(true);
-                //Debug.Log("NPC 감지됨: " + hit.collider.name);
 
                 if (Input.GetKeyDown(KeyCode.F))
                 {
-                    int layer = hit.collider.gameObject.layer;
+                    int layer = hit.collider.gameObject.layer;//ray에 충동한 오브젝트 layer값 저장
 
                     switch (layer)
                     {
