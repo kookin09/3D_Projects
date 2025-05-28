@@ -18,7 +18,7 @@ public class CheckRayleeju : MonoBehaviour
     {
         
     }
-
+    /*
     void CheckInterRay()
     {
         Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0)); // 정중앙
@@ -27,4 +27,5 @@ public class CheckRayleeju : MonoBehaviour
 
 
     }
+    */
 }
