@@ -4,15 +4,25 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public enum AIState
+public enum AIState //적 상태
 {
     Idle,
     Wandering,
-    Attacking
+    Attacking,
+    Fleeing
+}
+
+public enum EnemyType //적 타입
+{
+    Aggressive,
+    Passive
 }
 
 public class Enemy : MonoBehaviour, IDamagable
 {
+    [Header("Type")]
+    public EnemyType enemyType = EnemyType.Aggressive; //적의 타입 설정
+
     [Header("Stats")]
     public int health;
     public float walkSpeed;
@@ -42,33 +52,36 @@ public class Enemy : MonoBehaviour, IDamagable
     private Animator animator;
     private SkinnedMeshRenderer[] meshRenderers;
 
-
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         meshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
     }
+
     void Start()
     {
-        SetState(AIState.Wandering);
+        SetState(AIState.Wandering); //시작시 Wandering으로 상태로 진입
     }
 
     void Update()
     {
-        //플레이어와 거리계산
-        playerDistance = Vector3.Distance(transform.position, CharacterManager.Instance.Player.transform.position);
-
+        playerDistance = Vector3.Distance(transform.position, CharacterManager.Instance.Player.transform.position); //플레이어와 오브젝트의 거리계산
         animator.SetBool("Moving", aiState != AIState.Idle);
 
-        switch (aiState)
+        switch (aiState) //현재상태에 따라 로직 실행
         {
             case AIState.Idle:
             case AIState.Wandering:
                 PassiveUpdate();
                 break;
             case AIState.Attacking:
-                AttackingUpdate();
+                if (enemyType == EnemyType.Aggressive)
+                    AttackingUpdate();
+                break;
+            case AIState.Fleeing:
+                if (enemyType == EnemyType.Passive)
+                    FleeingUpdate();
                 break;
         }
     }
@@ -91,26 +104,36 @@ public class Enemy : MonoBehaviour, IDamagable
                 agent.speed = runSpeed;
                 agent.isStopped = false;
                 break;
+            case AIState.Fleeing:
+                agent.speed = runSpeed;
+                agent.isStopped = false;
+                break;
         }
 
-        animator.speed = agent.speed / walkSpeed;
+        animator.speed = agent.speed / walkSpeed; //애니메이션 속도 조정
     }
 
-    void PassiveUpdate()
+    void PassiveUpdate() //기본 상태
     {
+        // 도착하면 Idle 상태로 전환 후 일정 시간 대기
         if (aiState == AIState.Wandering && agent.remainingDistance < 0.1f)
         {
             SetState(AIState.Idle);
             Invoke("WanderToNewLocation", Random.Range(minWanderWaitTime, maxWanderWaitTime));
         }
 
-        if (playerDistance < detectDistance)
+        // 감지 범위 내 플레이어 감지 시 상태 전환
+        if (enemyType == EnemyType.Aggressive && playerDistance < detectDistance)
         {
             SetState(AIState.Attacking);
         }
+        else if (enemyType == EnemyType.Passive && playerDistance < detectDistance)
+        {
+            SetState(AIState.Fleeing);
+        }
     }
 
-    void WanderToNewLocation()
+    void WanderToNewLocation() // 랜덤 위치로 이동
     {
         if (aiState != AIState.Idle) return;
 
@@ -118,14 +141,13 @@ public class Enemy : MonoBehaviour, IDamagable
         agent.SetDestination(GetWanderLocation());
     }
 
-    Vector3 GetWanderLocation()
+    Vector3 GetWanderLocation() // 유효한 NavMesh 위치 반환
     {
         NavMeshHit hit;
 
         NavMesh.SamplePosition(transform.position + (Random.onUnitSphere * Random.Range(minWanderDistance, maxWanderDistance)), out hit, maxWanderDistance, NavMesh.AllAreas);
 
         int i = 0;
-
         while (Vector3.Distance(transform.position, hit.position) < detectDistance)
         {
             NavMesh.SamplePosition(transform.position + (Random.onUnitSphere * Random.Range(minWanderDistance, maxWanderDistance)), out hit, maxWanderDistance, NavMesh.AllAreas);
@@ -136,12 +158,12 @@ public class Enemy : MonoBehaviour, IDamagable
         return hit.position;
     }
 
-    void AttackingUpdate()
+    void AttackingUpdate() //공격
     {
         if (playerDistance < attackDistance && IsPlayerInFieldOfView())
         {
             agent.isStopped = true;
-            if (Time.time - lastAttackTime > attackRate)
+            if (Time.time - lastAttackTime > attackRate) //쿨타임후 다시공격
             {
                 lastAttackTime = Time.time;
                 CharacterManager.Instance.Player.condition.GetComponent<IDamagable>().TakePhysicalDamage(damage);
@@ -151,7 +173,7 @@ public class Enemy : MonoBehaviour, IDamagable
         }
         else
         {
-            if (playerDistance < detectDistance)
+            if (playerDistance < detectDistance) //감지 거리 내에서 추적
             {
                 agent.isStopped = false;
                 NavMeshPath path = new NavMeshPath();
@@ -161,6 +183,7 @@ public class Enemy : MonoBehaviour, IDamagable
                 }
                 else
                 {
+                    //경로 실패시 다시 방황상태
                     agent.SetDestination(transform.position);
                     agent.isStopped = true;
                     SetState(AIState.Wandering);
@@ -168,6 +191,7 @@ public class Enemy : MonoBehaviour, IDamagable
             }
             else
             {
+                //추적종료
                 agent.SetDestination(transform.position);
                 agent.isStopped = true;
                 SetState(AIState.Wandering);
@@ -175,17 +199,35 @@ public class Enemy : MonoBehaviour, IDamagable
         }
     }
 
-    bool IsPlayerInFieldOfView()
+    void FleeingUpdate() //도망
+    {
+        //플레이어 반대방향으로 이동
+        Vector3 directionAwayFromPlayer = (transform.position - CharacterManager.Instance.Player.transform.position).normalized;
+        Vector3 fleeTarget = transform.position + directionAwayFromPlayer * maxWanderDistance;
+
+        NavMeshPath path = new NavMeshPath();
+        if (agent.CalculatePath(fleeTarget, path))
+        {
+            agent.SetDestination(fleeTarget);
+        }
+
+        if (playerDistance > detectDistance * 1.5f) //일정거리 멀어지면 다시 방황상태
+        {
+            SetState(AIState.Wandering);
+        }
+    }
+
+    bool IsPlayerInFieldOfView() //시야각에 플레이어 확인
     {
         Vector3 directionToPlayer = CharacterManager.Instance.Player.transform.position - transform.position;
         float angle = Vector3.Angle(transform.forward, directionToPlayer);
         return angle < fieldOfView * 0.5f;
     }
 
-    public void TakePhysicalDamage(int damage)
+    public void TakePhysicalDamage(int damage) //데미지 처리
     {
         health -= damage;
-        if(health <= 0)
+        if (health <= 0)
         {
             Die();
         }
@@ -198,16 +240,16 @@ public class Enemy : MonoBehaviour, IDamagable
         Destroy(gameObject);
     }
 
-    IEnumerator DamageFlash()
+    IEnumerator DamageFlash() //피격시 색상변경
     {
-        for(int i = 0; i < meshRenderers.Length; i++)
+        for (int i = 0; i < meshRenderers.Length; i++)
         {
             meshRenderers[i].material.color = new Color(1.0f, 0.6f, 0.6f);
         }
 
         yield return new WaitForSeconds(0.1f);
 
-        for(int i = 0; i < meshRenderers.Length; i++)
+        for (int i = 0; i < meshRenderers.Length; i++)
         {
             meshRenderers[i].material.color = Color.white;
         }
