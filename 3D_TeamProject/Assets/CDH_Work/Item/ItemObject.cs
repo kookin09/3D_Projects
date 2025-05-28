@@ -6,13 +6,13 @@ public interface IInteractable
     public void OnInteract();       //      상호작용이 발생했을 때 실행되는 함수
 }
 
-public class ItemObject : MonoBehaviour
+public class ItemObject : MonoBehaviour, IInteractable
 {
     public ItemData data;
 
-    public string GetInteractPrompt()       
+    public string GetInteractablePrompt()
     {
-        string str = $"{data.displayName}\n{data.description}";    
+        string str = $"{data.displayName}\n{data.description}";
         return str;
     }
 
