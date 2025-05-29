@@ -17,7 +17,7 @@ public class Mint : MonoBehaviour
             //충돌한 애의 Inventory 클래스를 inventory라고 선언하고 여기에
             //충돌한 애의 Inventory라는 컴포넌트를 담는다
             Inventory inventory = collision.GetComponent<Inventory>();
-            inventory.AddCanStackItem(itemData, 1);
+            //inventory.AddCanStackItem(itemData, 1);
 
             Destroy(gameObject);
         }

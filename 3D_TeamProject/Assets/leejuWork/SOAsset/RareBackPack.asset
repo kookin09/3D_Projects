@@ -16,4 +16,4 @@ MonoBehaviour:
   BackImage: {fileID: 0}
   BackPackDescription: "\uC544\uC774\uD15C 30\uAC1C\uB97C \uC800\uC7A5\uD560 \uC218
     \uC788\uB294 \uAE30\uBCF8\uC81C\uACF5 \uAC00\uBC29\uC774\uB2E4."
-  MaxStackCount: 30
+  MaxStackCount: 35
