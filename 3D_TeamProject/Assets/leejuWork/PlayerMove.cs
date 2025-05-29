@@ -128,10 +128,10 @@ public class PlayerMove : MonoBehaviour
         transform.eulerAngles += new Vector3(0, mouseDelta.x * lookSensitivity, 0);
     }
 
-    public void ToggleCursor(bool toggle)       //      인벤토리 열었을 때 시점 회전 X
+    void ToggleCursor()      //      인벤토리 열었을 때 시점 회전 X
     {
+        bool toggle = Cursor.lockState == CursorLockMode.Locked;
         Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
         canLook = !toggle;
     }
-
 }
