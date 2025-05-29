@@ -432,8 +432,8 @@ public class BuildingManager : MonoBehaviour
         // 카메라 움직임 멈춤 필요
 
         // 커서 활성화/비활성화 (화면 움직이 추가되면 사용될 코드)
-        //Cursor.visible = active;
-        //Cursor.lockState = active ? CursorLockMode.None : CursorLockMode.Locked;
+        Cursor.visible = active;
+        Cursor.lockState = active ? CursorLockMode.None : CursorLockMode.Locked;
     }
 
     // 파괴 모드 on/off 스위치 관리 (UI 갱신 포함)
