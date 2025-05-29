@@ -18,8 +18,31 @@ public class ItemObject : MonoBehaviour, IInteractable
 
     public void OnInteract()
     {
-        CharacterManager.Instance.Player.itemData = data;
-        CharacterManager.Instance.Player.addItem?.Invoke();
+        var player = CharacterManager.Instance.Player;
+
+        player.itemData = data;
+        player.addItem?.Invoke();
+
+
+        if (data.type == ItemType.Consumable)
+        {
+            foreach (var c in data.consumables)
+            {
+                switch (c.type)
+                {
+                    case ConsumableType.Hunger:
+                        player.condition.Eat(c.value);
+                        Debug.Log($"[회복됨] {c.type} + {c.value}");
+                        break;
+                    case ConsumableType.Drink:
+                        player.condition.Drink(c.value);
+                        break;
+                    case ConsumableType.Health:
+                        player.condition.Heal(c.value);
+                        break;
+                }
+            }
+        }
         Destroy(gameObject);
     }
 }

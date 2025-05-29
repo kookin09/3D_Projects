@@ -30,6 +30,7 @@ public class ItemData : ScriptableObject
     public string displayName;      //      아이템 표기 이름
     public string description;      //      아이템 설명
     public ItemType type;           //      아이템 종류
+    public ConsumableType consumableType;    //    섭취 음식 종류
     public Sprite icon;             //      아이템에 쓰일 스프라이트 아이콘
     public GameObject dropPrefab;
 

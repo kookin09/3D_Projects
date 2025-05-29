@@ -15,48 +15,13 @@ MonoBehaviour:
   displayName: "\uC74C\uB8CC"
   description: "\uC218\uBD84\uC744 \uD68C\uBCF5\uD574\uC900\uB2E4"
   type: 2
+  consumableType: 0
   icon: {fileID: 0}
   dropPrefab: {fileID: 0}
   canStack: 1
   maxStackAmount: 10
   consumables:
-  - type: 0
-    value: 0
-  - type: 0
-    value: 0
-  - type: 0
-    value: 0
-  - type: 0
-    value: 0
-  - type: 0
-    value: 0
-  - type: 0
-    value: 0
-  - type: 0
-    value: 0
-  - type: 0
-    value: 0
-  - type: 0
-    value: 0
-  - type: 0
-    value: 0
-  - type: 0
-    value: 0
-  - type: 0
-    value: 0
-  - type: 0
-    value: 0
-  - type: 0
-    value: 0
-  - type: 0
-    value: 0
-  - type: 0
-    value: 0
-  - type: 0
-    value: 0
-  - type: 0
-    value: 0
-  - type: 0
-    value: 0
-  - type: 0
-    value: 0
+  - type: 1
+    value: 50
+  - type: 2
+    value: 20
