@@ -5,7 +5,7 @@ using UnityEngine;
 public class TabUI : MonoBehaviour
 {
     public GameObject InvenUiCanvas;
-
+    public PlayerMove move;
     void Start()
     {
         InvenUiCanvas = GameObject.Find("UI Canvas");
@@ -20,6 +20,15 @@ public class TabUI : MonoBehaviour
             bool setUI = !InvenUiCanvas.activeSelf;
             InvenUiCanvas.SetActive(setUI);
             Debug.Log("인벤켜짐: " + setUI);
+            //move.ToggleCursor();
+            ToggleCursor(setUI);
+
         }
+    }
+
+    public void ToggleCursor(bool toggle)       //      인벤토리 열었을 때 시점 회전 X
+    {
+        Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
+        move.canLook = !toggle;
     }
 }
