@@ -14,6 +14,9 @@ public class Inventory : MonoBehaviour
     //실제 인벤토리에 아이템 정보를 저장할 공간을 할당;
     public List<leejuItemSlot> AssignPlace = new List<leejuItemSlot>();
 
+    //UI전용 리스트를 따로 생성해서 유지보수 편하게 
+    public List<UIItemSlot> AssignUIPlace = new List<UIItemSlot>();
+
     void Start()
     {
 
@@ -64,7 +67,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    //
+    //인벤토리에 추가할때 실제 적용되는 메서드
     public bool AddCanStackItem(ItemData data, int getItemStack)
     {
         //지금 얻은 아이템이 스택형이라면
@@ -78,6 +81,8 @@ public class Inventory : MonoBehaviour
                 {
                     //기존의 아이템슬롯에 개수 더해준다
                     AssignPlace[i].CurItemStack += getItemStack;
+                    //UI에도 최신화 해준다
+                    SetInventoryUI();
                     return true;
                 }
             }
@@ -91,6 +96,8 @@ public class Inventory : MonoBehaviour
                     AssignPlace[i].data = data;
                     //개수 지정
                     AssignPlace[i].CurItemStack = getItemStack;
+                    //UI에도 최신화 해준다
+                    SetInventoryUI();
                     return true;
                 }
             }
@@ -108,6 +115,8 @@ public class Inventory : MonoBehaviour
                     AssignPlace[i].data = data;
                     //개수 지정
                     AssignPlace[i].CurItemStack = getItemStack;
+                    //UI에도 최신화 해준다
+                    SetInventoryUI();
                     return true;
                 }
             }
@@ -115,5 +124,21 @@ public class Inventory : MonoBehaviour
         return false;
     }
 
-    //
+    //인벤토리에 추가할때 UI에 적용되는 메서드
+    void SetInventoryUI()
+    {
+        //UI전용 슬롯리스트 스캔 한번 땡기는데 크기는 인벤이랑 같아야지
+        for(int i = 0; i < AssignPlace.Count; i++)
+        {
+            if (AssignPlace[i].data != null)
+            {
+
+                AssignUIPlace[i].SetUIItemStack(AssignPlace[i].data, AssignPlace[i].CurItemStack);
+            }
+            else
+            {
+                AssignUIPlace[i].SetUINullItemStack();
+            }
+        }
+    }
 }
