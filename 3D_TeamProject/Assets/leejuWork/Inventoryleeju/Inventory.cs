@@ -47,10 +47,10 @@ public class Inventory : MonoBehaviour
             {
                 leejuItemSlot slot = AssignPlace[i];
 
-                if (slot.itemInfo != null)
+                if (slot.data != null)
                 {
                     usedSlots++;
-                    Debug.Log($"[슬롯 {i}] 아이템: {slot.itemInfo.ItemName}, 개수: {slot.CurItemStack}");
+                    Debug.Log($"[슬롯 {i}] 아이템: {slot.data.displayName}, 개수: {slot.CurItemStack}");
                 }
             }
 
@@ -65,16 +65,16 @@ public class Inventory : MonoBehaviour
     }
 
     //
-    public bool AddCanStackItem(leejuItemSO itemSO, int getItemStack)
+    public bool AddCanStackItem(ItemData data, int getItemStack)
     {
         //지금 얻은 아이템이 스택형이라면
-        if (itemSO.canStack)
+        if (data.canStack)
         {
             //슬롯한번 스캔땡기고
             for (int i = 0; i < AssignPlace.Count; i++)
             {
                 //같은종류 아이템있는게 트루면
-                if (AssignPlace[i].itemInfo == itemSO)
+                if (AssignPlace[i].data == data)
                 {
                     //기존의 아이템슬롯에 개수 더해준다
                     AssignPlace[i].CurItemStack += getItemStack;
@@ -85,10 +85,10 @@ public class Inventory : MonoBehaviour
             for (int i = 0; i < AssignPlace.Count; i++)
             {
                 //비어있는 슬롯 찾으면
-                if (AssignPlace[i].itemInfo == null)
+                if (AssignPlace[i].data == null)
                 {
                     //아이템 저장하고
-                    AssignPlace[i].itemInfo = itemSO;
+                    AssignPlace[i].data = data;
                     //개수 지정
                     AssignPlace[i].CurItemStack = getItemStack;
                     return true;
@@ -102,10 +102,10 @@ public class Inventory : MonoBehaviour
             for (int i = 0; i < AssignPlace.Count; i++)
             {
                 //비어있는 슬롯 찾으면
-                if (AssignPlace[i].itemInfo == null)
+                if (AssignPlace[i].data == null)
                 {
                     //아이템 저장하고
-                    AssignPlace[i].itemInfo = itemSO;
+                    AssignPlace[i].data = data;
                     //개수 지정
                     AssignPlace[i].CurItemStack = getItemStack;
                     return true;

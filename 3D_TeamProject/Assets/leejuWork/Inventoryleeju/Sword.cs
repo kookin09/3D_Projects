@@ -5,7 +5,7 @@ using UnityEngine;
 public class Sword : MonoBehaviour
 {
 
-    public leejuItemSO itemData;
+    public ItemData itemData;
 
     void OnTriggerEnter(Collider collision)
     {
