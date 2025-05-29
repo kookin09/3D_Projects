@@ -43,6 +43,8 @@ public class BuildingManager : MonoBehaviour
     [SerializeField] private GameObject buildingUI;
     [SerializeField] private TMP_Text destroyText;
 
+    public PlayerMove playerMove;
+
     private void Update()
     {
         // input system 으로 추후 변경 삭제하면 됨
@@ -430,10 +432,11 @@ public class BuildingManager : MonoBehaviour
         buildingUI.SetActive(active);
 
         // 카메라 움직임 멈춤 필요
+        playerMove.ToggleCursor(active);
 
         // 커서 활성화/비활성화 (화면 움직이 추가되면 사용될 코드)
-        Cursor.visible = active;
-        Cursor.lockState = active ? CursorLockMode.None : CursorLockMode.Locked;
+        //Cursor.visible = active;
+        //Cursor.lockState = active ? CursorLockMode.None : CursorLockMode.Locked;
     }
 
     // 파괴 모드 on/off 스위치 관리 (UI 갱신 포함)
