@@ -14,9 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: "\uB4A4\uD2C0\uB9B0\uC74C\uC2DD"
   description: 
-  type: 0
+  type: 2
   icon: {fileID: 21300000, guid: 86f74aad5ebd50646947cf2659f13777, type: 3}
   dropPrefab: {fileID: 0}
   canStack: 1
   maxStackAmount: 0
-  consumables: []
+  consumables:
+  - type: 0
+    value: 100
+  - type: 2
+    value: 50
