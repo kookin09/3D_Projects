@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f43afad7cc78b744c8518021e6cd2814, type: 3}
-  m_Name: Swordleeju
+  m_Name: Sword2leeju
   m_EditorClassIdentifier: 
-  ItemName: "\uCCAB\uBC88\uC9F8\uAC80"
+  ItemName: "\uB450\uBC88\uC9F8\uAC80"
   ItemIcon: {fileID: 21300000, guid: 42dc3b4a4f2c68f4191301c72efbdb6f, type: 3}
   canEdible: 0
   canStack: 0

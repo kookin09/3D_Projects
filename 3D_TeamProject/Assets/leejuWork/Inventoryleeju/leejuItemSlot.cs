@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class leejuItemSlot
 {
-    public leejuItemSO itemInfo;
+    public ItemData data;
     public int CurItemStack;
 
-    public leejuItemSlot(leejuItemSO itemInfo, int stack)
+    public leejuItemSlot(ItemData data, int stack)
     {
-        this.itemInfo = itemInfo;
+        this.data = data;
         this.CurItemStack = stack;
     }
 }
