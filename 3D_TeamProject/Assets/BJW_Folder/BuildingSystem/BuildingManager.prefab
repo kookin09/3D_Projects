@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2196559177517657898
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1514177157310223997}
+  - component: {fileID: 7436525845985464872}
+  m_Layer: 0
+  m_Name: BuildingManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1514177157310223997
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2196559177517657898}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.4857833, y: 5.428126, z: 4.101659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7436525845985464872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2196559177517657898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 040e136c14934d445a041ba610309cc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floorObjects:
+  - {fileID: 7032063151645046927, guid: 45821e700c7f69642bc1027ad44bfdcc, type: 3}
+  wallObjects:
+  - {fileID: 4409997123187485144, guid: 48d4dabfb99af794db9525eb334ee469, type: 3}
+  - {fileID: 2602174325077468284, guid: d5504d310a4b966409358883144ca42d, type: 3}
+  - {fileID: 7316708867375893772, guid: bfa974a6f5701784b9fe21d004cd8f35, type: 3}
+  furnitureObjects:
+  - {fileID: 7441468802731498372, guid: 3386fe3018d617245be7827c0a8d80bc, type: 3}
+  - {fileID: 2267913300179639454, guid: 67207d775f471fa4f9e268dd1ff68d93, type: 3}
+  - {fileID: 2657417829398501428, guid: f65fe58153d0d204f8f4b3efac4c171f, type: 3}
+  - {fileID: 6569868578968517392, guid: 92c1d1037037bc6459878f6c2d17b8a2, type: 3}
+  currentBuildType: 0
+  connectorLayer:
+    serializedVersion: 2
+    m_Bits: 2147483648
+  isDestroying: 0
+  ghostMaterialValid: {fileID: 2100000, guid: 952b5981177f5dc43abfc1492251e0d4, type: 2}
+  ghostMaterialInvalid: {fileID: 2100000, guid: 4b94b36c5a152424babc03ba3bbdabab, type: 2}
+  connectorOverlapRadious: 1
+  maxGroundAngle: 45
+  isBuilding: 0
+  currentBuildingIndex: 0
+  buildingUI: {fileID: 8356400334370193744, guid: b773e220bd2021f4fb9131a8f401037f, type: 3}
+  destroyText: {fileID: 0}
+  playerMove: {fileID: 0}
