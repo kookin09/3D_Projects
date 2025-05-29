@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class BuildingManager : MonoBehaviour
 {
@@ -10,8 +11,6 @@ public class BuildingManager : MonoBehaviour
     // 설치 가능 위치면 "유효" 색상, 불가능하면 "무효" 색상
     // 클릭 시 실제 건설, 연결 상태 갱신
     // 할일 : 플레이어 화면 움직임 연동 (건설 메뉴 열었을 때 화면이 돌아가지 않게끔 설정해주기)
-    //        가구 추가해보기
-    //        아이템 구현 완성되면 연동해서 재료 소모방식 추가
 
     [Header("건축 물체")]
     [SerializeField] private List<GameObject> floorObjects = new List<GameObject>();
@@ -46,7 +45,7 @@ public class BuildingManager : MonoBehaviour
 
     private void Update()
     {
-        // input system 으로 추후 변경
+        // input system 으로 추후 변경 삭제하면 됨
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             ToggleBuildingUI(!buildingUI.activeInHierarchy);
@@ -75,6 +74,15 @@ public class BuildingManager : MonoBehaviour
                 DestroyBuild();
         }
     }
+
+    // input system 추가용
+    /*
+    public void OnBuildMenu(InputAction.CallbackContext context)
+    {
+        if (context.started)
+            ToggleBuildingUI(!buildingUI.activeInHierarchy);
+    }
+    */
 
     private void GhostBuild()
     {
