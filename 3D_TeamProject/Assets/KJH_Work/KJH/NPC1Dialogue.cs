@@ -2,7 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections;
-using DG.Tweening; // DOTween 라이브러리 필요
+using DG.Tweening; 
 
 public class NPC1Dialogue : MonoBehaviour
 {

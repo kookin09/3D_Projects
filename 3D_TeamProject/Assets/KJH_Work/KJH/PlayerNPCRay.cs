@@ -60,6 +60,11 @@ public class PlayerNPCRay : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            NPCText.text = "";
+            NPCText.gameObject.SetActive(false);
+        }
 
         Debug.DrawRay(ray.origin, ray.direction * NPCrayDistance, Color.red);
     }
