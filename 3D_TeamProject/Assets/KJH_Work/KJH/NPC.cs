@@ -17,10 +17,12 @@ public class NPC : MonoBehaviour , IInteractableNPC
     public void InteractNPC2()
     {
         Debug.Log(gameObject.name + " 와(과) 상호작용됨!");
+        dialogue1.StartDialogue1();
     }
 
     public void InteractNPC3()
     {
         Debug.Log(gameObject.name + " 와(과) 상호작용됨!");
+        dialogue1.StartDialogue1();
     }
 }
