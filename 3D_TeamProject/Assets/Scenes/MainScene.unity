@@ -481,6 +481,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Equip_Bow
       objectReference: {fileID: 0}
+    - target: {fileID: 7941291737890800069, guid: 7818cc737323de94cae5e2078e695757, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -496,7 +500,6 @@ GameObject:
   m_Component:
   - component: {fileID: 407450508}
   - component: {fileID: 407450510}
-  - component: {fileID: 407450509}
   m_Layer: 0
   m_Name: EquipCamera
   m_TagString: Untagged
@@ -521,14 +524,6 @@ Transform:
   - {fileID: 1117938034}
   m_Father: {fileID: 6565908314792807358}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &407450509
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 407450507}
-  m_Enabled: 1
 --- !u!20 &407450510
 Camera:
   m_ObjectHideFlags: 0
