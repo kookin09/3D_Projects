@@ -268,11 +268,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &100674113 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4157647645804764640, guid: ab4371094fc38d945b47845bed9533c0, type: 3}
-  m_PrefabInstance: {fileID: 473885720}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &262299801
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,10 +643,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanvasNPC
       objectReference: {fileID: 0}
-    - target: {fileID: 3477585703465423223, guid: ab4371094fc38d945b47845bed9533c0, type: 3}
-      propertyPath: m_text
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 7842381693052975714, guid: ab4371094fc38d945b47845bed9533c0, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -742,7 +733,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8850296953016099317, guid: ab4371094fc38d945b47845bed9533c0, type: 3}
   m_PrefabInstance: {fileID: 473885720}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 100674113}
+  m_GameObject: {fileID: 1886837652}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
@@ -1098,6 +1089,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 896629553}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &909039269 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 716442890567094397, guid: ab4371094fc38d945b47845bed9533c0, type: 3}
+  m_PrefabInstance: {fileID: 473885720}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &941432336
 GameObject:
   m_ObjectHideFlags: 0
@@ -1426,25 +1428,17 @@ PrefabInstance:
     - target: {fileID: 7529054939865929414, guid: 35bf1782aafab0346851d0e2317bdf12, type: 3}
       propertyPath: space
       value: 
-      objectReference: {fileID: 1329193004}
+      objectReference: {fileID: 909039269}
     - target: {fileID: 7529054939865929414, guid: 35bf1782aafab0346851d0e2317bdf12, type: 3}
       propertyPath: dialogueUI
       value: 
-      objectReference: {fileID: 100674113}
-    - target: {fileID: 7529054939865929414, guid: 35bf1782aafab0346851d0e2317bdf12, type: 3}
-      propertyPath: NPCDialogue
-      value: 
-      objectReference: {fileID: 494044939}
+      objectReference: {fileID: 1886837652}
     - target: {fileID: 7529054939865929414, guid: 35bf1782aafab0346851d0e2317bdf12, type: 3}
       propertyPath: dialogueText
       value: 
       objectReference: {fileID: 494044939}
     - target: {fileID: 7529054939865929414, guid: 35bf1782aafab0346851d0e2317bdf12, type: 3}
       propertyPath: dialoguePanel
-      value: 
-      objectReference: {fileID: 2037030772}
-    - target: {fileID: 7529054939865929414, guid: 35bf1782aafab0346851d0e2317bdf12, type: 3}
-      propertyPath: DialoguePannel
       value: 
       objectReference: {fileID: 2037030772}
     m_RemovedComponents: []
@@ -1617,17 +1611,6 @@ MonoBehaviour:
   - {fileID: 9217841091633826893}
   - {fileID: 8264988015654765133}
   - {fileID: 8422260891269150448}
---- !u!114 &1329193004 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 716442890567094397, guid: ab4371094fc38d945b47845bed9533c0, type: 3}
-  m_PrefabInstance: {fileID: 473885720}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1329867341
 GameObject:
   m_ObjectHideFlags: 0
@@ -2261,6 +2244,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 886d2d4d1fd4bf644bd45e05e824ed90, type: 3}
+--- !u!1 &1886837652 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4157647645804764640, guid: ab4371094fc38d945b47845bed9533c0, type: 3}
+  m_PrefabInstance: {fileID: 473885720}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1901232037
 GameObject:
   m_ObjectHideFlags: 0
@@ -2540,25 +2528,17 @@ PrefabInstance:
     - target: {fileID: 4459188576262717191, guid: eeaa4a572ed054545adcaec66092342b, type: 3}
       propertyPath: space
       value: 
-      objectReference: {fileID: 1329193004}
+      objectReference: {fileID: 909039269}
     - target: {fileID: 4459188576262717191, guid: eeaa4a572ed054545adcaec66092342b, type: 3}
       propertyPath: dialogueUI
       value: 
-      objectReference: {fileID: 100674113}
-    - target: {fileID: 4459188576262717191, guid: eeaa4a572ed054545adcaec66092342b, type: 3}
-      propertyPath: NPCDialogue
-      value: 
-      objectReference: {fileID: 494044939}
+      objectReference: {fileID: 1886837652}
     - target: {fileID: 4459188576262717191, guid: eeaa4a572ed054545adcaec66092342b, type: 3}
       propertyPath: dialogueText
       value: 
       objectReference: {fileID: 494044939}
     - target: {fileID: 4459188576262717191, guid: eeaa4a572ed054545adcaec66092342b, type: 3}
       propertyPath: dialoguePanel
-      value: 
-      objectReference: {fileID: 2037030772}
-    - target: {fileID: 4459188576262717191, guid: eeaa4a572ed054545adcaec66092342b, type: 3}
-      propertyPath: DialoguePannel
       value: 
       objectReference: {fileID: 2037030772}
     - target: {fileID: 4606899723262121077, guid: eeaa4a572ed054545adcaec66092342b, type: 3}
@@ -2717,11 +2697,11 @@ PrefabInstance:
     - target: {fileID: 8405306130473093079, guid: b84a9322560a85341ac6aed302e147f6, type: 3}
       propertyPath: space
       value: 
-      objectReference: {fileID: 1329193004}
+      objectReference: {fileID: 909039269}
     - target: {fileID: 8405306130473093079, guid: b84a9322560a85341ac6aed302e147f6, type: 3}
       propertyPath: dialogueUI
       value: 
-      objectReference: {fileID: 100674113}
+      objectReference: {fileID: 1886837652}
     - target: {fileID: 8405306130473093079, guid: b84a9322560a85341ac6aed302e147f6, type: 3}
       propertyPath: NPCDialogue
       value: 

@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b768ad2e00002e479ad0f06f0d58f18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue1: {fileID: 0}
+  dialogue1: {fileID: 7529054939865929414}
 --- !u!114 &7529054939865929414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,9 +63,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbd6afa18ebd1fc41b44a9c2672beff1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NPCDialogue: {fileID: 0}
-  DialoguePannel: {fileID: 0}
   dialogueText: {fileID: 0}
+  space: {fileID: 0}
+  dialoguePanel: {fileID: 0}
+  dialogueUI: {fileID: 0}
   dialogues:
   - "\uB300\uC0AC 1"
   - "\uB300\uC0AC 2"
