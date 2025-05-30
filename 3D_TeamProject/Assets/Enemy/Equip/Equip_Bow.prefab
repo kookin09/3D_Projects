@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2403441995875998915
+--- !u!1 &1231781592246009402
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1841389783110781638}
-  m_Layer: 15
-  m_Name: ArrowSpawnPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1841389783110781638
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2403441995875998915}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0.49049583, y: -0.5108957, z: 0.5092629, w: 0.488928}
-  m_LocalPosition: {x: -0.079, y: 0.01, z: -0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2705370514928707781}
-  m_LocalEulerAnglesHint: {x: 2.334, y: -90.184, z: 89.993}
---- !u!1 &3368895427516854911
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2705370514928707781}
-  - component: {fileID: 1307367373596731232}
-  - component: {fileID: 3873171524302918570}
+  - component: {fileID: 2144494455939124839}
+  - component: {fileID: 3284537657297977342}
+  - component: {fileID: 5897554921888405086}
   m_Layer: 15
   m_Name: Bow_01
   m_TagString: Untagged
@@ -49,37 +18,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2705370514928707781
+--- !u!4 &2144494455939124839
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3368895427516854911}
+  m_GameObject: {fileID: 1231781592246009402}
   serializedVersion: 2
   m_LocalRotation: {x: -0.05602266, y: 0.7631294, z: 0.066765204, w: 0.64034164}
   m_LocalPosition: {x: 0.2, y: 0, z: 0.6}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1841389783110781638}
-  m_Father: {fileID: 6537734045604763268}
+  m_Children: []
+  m_Father: {fileID: 1536694633924968100}
   m_LocalEulerAnglesHint: {x: -10, y: 100, z: 0}
---- !u!33 &1307367373596731232
+--- !u!33 &3284537657297977342
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3368895427516854911}
+  m_GameObject: {fileID: 1231781592246009402}
   m_Mesh: {fileID: -7983878246839791379, guid: 3855b63c5a0b1a041a1acca8eb229d9b, type: 3}
---- !u!23 &3873171524302918570
+--- !u!23 &5897554921888405086
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3368895427516854911}
+  m_GameObject: {fileID: 1231781592246009402}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -115,7 +83,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &4789616961918381525
+--- !u!1 &7941291737890800069
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,9 +91,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6537734045604763268}
-  - component: {fileID: 1622614659388232088}
-  - component: {fileID: 6919691814709785200}
+  - component: {fileID: 1536694633924968100}
+  - component: {fileID: 8087543265009858964}
+  - component: {fileID: 8512831661308418741}
   m_Layer: 15
   m_Name: Equip_Bow
   m_TagString: Untagged
@@ -133,30 +101,31 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6537734045604763268
+--- !u!4 &1536694633924968100
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4789616961918381525}
+  m_GameObject: {fileID: 7941291737890800069}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2705370514928707781}
+  - {fileID: 2144494455939124839}
+  - {fileID: 2555812679854129408}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1622614659388232088
+--- !u!95 &8087543265009858964
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4789616961918381525}
+  m_GameObject: {fileID: 7941291737890800069}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 2d88b089d029627458484b8425a156aa, type: 2}
@@ -170,20 +139,51 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6919691814709785200
+--- !u!114 &8512831661308418741
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4789616961918381525}
+  m_GameObject: {fileID: 7941291737890800069}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d40490e4fc46a514a9fb749cbd38f286, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 1622614659388232088}
+  animator: {fileID: 8087543265009858964}
   arrowPrefab: {fileID: 2379119661651249051, guid: 39d4ee84ac536ce439f4f2cef27beabb, type: 3}
-  firePoint: {fileID: 1841389783110781638}
-  arrowSpeed: 25
+  firePoint: {fileID: 2555812679854129408}
+  arrowSpeed: 40
   attackCooldown: 1.5
+--- !u!1 &8592767293399021829
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2555812679854129408}
+  m_Layer: 15
+  m_Name: ArrowSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2555812679854129408
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8592767293399021829}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.2, y: 0, z: 0.65}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1536694633924968100}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
