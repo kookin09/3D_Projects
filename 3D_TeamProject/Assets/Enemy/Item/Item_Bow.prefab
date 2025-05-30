@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2691857412269770585}
   - component: {fileID: 5814752341917164110}
   - component: {fileID: 739304849018960521}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bow_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 7481124364574630437}
   - component: {fileID: 6581996140156410079}
   - component: {fileID: 6261386313856149522}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Item_Bow
   m_TagString: Untagged
   m_Icon: {fileID: 0}

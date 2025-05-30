@@ -63,13 +63,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbd6afa18ebd1fc41b44a9c2672beff1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NPCDialogue: {fileID: 0}
-  DialoguePannel: {fileID: 0}
   dialogueText: {fileID: 0}
+  space: {fileID: 0}
+  dialoguePanel: {fileID: 0}
+  dialogueUI: {fileID: 0}
   dialogues:
   - "\uC548\uB155\uD558\uC2ED\uB2C8\uAE4C"
   - "NPC2 \uC785\uB2C8\uB2E4"
-  - "\u3141\u3134\u3147\u313B\u3134\u3147\u313B\u3134\u3147\u313B\u3134\u3147\u313B\u3134\u3147\u313B"
+  - "\uB300\uC0AC\uB97C\uC544\uC8FC\uAE38\uAC8C\uBF51\uC544\uBCF4\uB3C4\uB85D\uD558\uACA0\uC2B5\uB2C8\uB2E4\uC720\uC544\uC774\uD310\uB12C\uC740\uC560\uB2C8\uBA54\uC774\uC158\uC5B4\uB5BB\uAC8C\uB123\uB294\uC9C0\uBAA8\uB974\uACA0\uC2B5\uB2C8\uB2E4"
 --- !u!114 &8828865829181080645
 MonoBehaviour:
   m_ObjectHideFlags: 0
