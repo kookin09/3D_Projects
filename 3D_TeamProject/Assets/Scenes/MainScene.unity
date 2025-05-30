@@ -2863,10 +2863,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: "\uBBFC\uD2B8 \uCD08\uCF54\uB2E4.\n\uC0AC\uC6A9\uD558\uBA74 \uC57D\uAC04\uC758
+    \uCCB4\uB825\uC744 \uD68C\uBCF5\uD55C\uB2E4."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c777cd116c0e8a04d9c513c76101b56f, type: 2}
+  m_sharedMaterial: {fileID: -7600746254692941870, guid: c777cd116c0e8a04d9c513c76101b56f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5734,10 +5735,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: "\uC0AC\uC6A9\uD558\uAE30"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c777cd116c0e8a04d9c513c76101b56f, type: 2}
+  m_sharedMaterial: {fileID: -7600746254692941870, guid: c777cd116c0e8a04d9c513c76101b56f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6325,6 +6326,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3622218579028992754}
   - component: {fileID: 8187423007924315430}
+  - component: {fileID: 8187423007924315431}
   m_Layer: 0
   m_Name: TabInevnToggle
   m_TagString: Untagged
@@ -8037,10 +8039,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: "\uBC84\uB9AC\uAE30"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c777cd116c0e8a04d9c513c76101b56f, type: 2}
+  m_sharedMaterial: {fileID: -7600746254692941870, guid: c777cd116c0e8a04d9c513c76101b56f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9320,7 +9322,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5638784509367038659
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9626,10 +9628,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: "\uBBFC\uD2B8 \uCD08\uCF54 \uCF00\uC774\uD06C"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c777cd116c0e8a04d9c513c76101b56f, type: 2}
+  m_sharedMaterial: {fileID: -7600746254692941870, guid: c777cd116c0e8a04d9c513c76101b56f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10032,7 +10034,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1300398688982617176}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8187423007924315431}
+        m_TargetAssemblyTypeName: InvenDelItem, Assembly-CSharp
+        m_MethodName: ClickDelSlotItem
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6321955366306265123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12098,6 +12112,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InvenUiCanvas: {fileID: 0}
   move: {fileID: 385514164935768278}
+--- !u!114 &8187423007924315431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2859396620330945124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5167671384ab6204091d11261c6d38d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inven: {fileID: 1271320008}
 --- !u!224 &8202468598857035706
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12257,7 +12284,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4927899409111979223}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8187423007924315431}
+        m_TargetAssemblyTypeName: InvenDelItem, Assembly-CSharp
+        m_MethodName: ClickUseSlotItem
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8259113186959612521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12879,7 +12918,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!222 &8740336461903291816
 CanvasRenderer:
   m_ObjectHideFlags: 0
