@@ -12,10 +12,14 @@ public class UIItemSlot : MonoBehaviour
     public TextMeshProUGUI quantityText;
 
     
+
+
     public void SetUIItemStack(ItemData data,int stack)
     {
         icon.sprite = data.icon;
         quantityText.text = stack.ToString();
+        //itemNameText.text = data.displayName;
+        //itemDescriptionText.text = data.description;
     }
 
     /// <summary>
@@ -26,4 +30,7 @@ public class UIItemSlot : MonoBehaviour
         icon.sprite = null;
         quantityText.text = "";
     }
+
+    
+
 }

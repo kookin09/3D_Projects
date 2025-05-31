@@ -1,18 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ItemSlot : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public TextMeshProUGUI itemNameText;
+    public TextMeshProUGUI itemDescriptionText;
 
-    // Update is called once per frame
-    void Update()
+    public ItemData data;
+
+    public void SetUIItemNameAndDescription()
     {
-        
+        itemNameText.text = data.displayName;
+        itemDescriptionText.text = data.description;
+
     }
 }
