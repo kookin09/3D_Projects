@@ -28,6 +28,10 @@ public class PlayerMove : MonoBehaviour
     private Vector2 curMovementInput;
     public LayerMask groundLayerMask;
 
+    [Header("무기 오브젝트")]
+    public GameObject equipSword;
+    public GameObject equipBow;
+
     private Rigidbody rb;
 
     void Awake()
@@ -132,6 +136,26 @@ public class PlayerMove : MonoBehaviour
     {
         Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
         canLook = !toggle;
+    }
+
+    public void OnToggleSword(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+        {
+            bool isActive = equipSword.activeSelf;
+            equipSword.SetActive(!isActive); // 현재 상태 반대로 토글
+            equipBow.SetActive(false);       // 활은 무조건 비활성화
+        }
+    }
+
+    public void OnToggleBow(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+        {
+            bool isActive = equipBow.activeSelf;
+            equipBow.SetActive(!isActive);   // 현재 상태 반대로 토글
+            equipSword.SetActive(false);     // 검은 무조건 비활성화
+        }
     }
 
 }
