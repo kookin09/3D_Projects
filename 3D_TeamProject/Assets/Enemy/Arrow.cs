@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
-    public float speed = 30f;
+    public int damage = 15;
+    public float lifeTime = 5f;
 
-    private Rigidbody rb;
-
-    void Start()
+    private void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        rb.velocity = transform.forward * speed;
+        Destroy(gameObject, lifeTime);
     }
 
-    void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        // 충돌 시 화살 고정 (옵션)
-        rb.isKinematic = true;
-        transform.parent = collision.transform;
+        if (other.TryGetComponent<IDamagable>(out var target))
+        {
+            target.TakePhysicalDamage(damage);
+            Destroy(gameObject);
+        }
     }
 }
