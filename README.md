@@ -14,6 +14,8 @@
 
 • [건축](#건축) 
 
+• [구현 실패](#구현-실패) 
+
 ## 기본 조작법
 [ 목차로 돌아가기](#목차)
 
@@ -64,3 +66,21 @@ tab키를 눌러 건축 가능
 ![탭키로건축](https://github.com/user-attachments/assets/b72bf250-af98-40b1-9c00-8b62386393a0)
 
 <br/>
+
+
+## 구현 실패
+[ 목차로 돌아가기](#목차)
+
+UI연결에 실패했습니다. 이것만 했다면 완성도를 더 높일수 있었을것 같습니다.
+<br/>
+<img width="650" alt="image" src="https://github.com/user-attachments/assets/bdbfd3a8-8744-481d-9312-467329ac69b2" />
+
+<br/>
+
+임시로 사용하기 버튼과 체력ui에 연결해보니 되긴 합니다.
+<br/>
+![되네](https://github.com/user-attachments/assets/04f556d5-d820-4b80-a2ed-0f1a728b1d39)
+
+<br/>
+
+
