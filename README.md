@@ -8,6 +8,7 @@
 <br/>
 <br/>
 1번키 2번키로 무기교체, 좌클릭으로 공격
+<br/>
 ![무기교체및공격](https://github.com/user-attachments/assets/dea38676-6c20-45bc-a53b-a7d00a565b8f)
 <br/>
 <br/>
@@ -20,6 +21,7 @@ NPC가 보이면 e키로 상호작용 대사 출력
 <br/>
 <br/>
 tab키를 눌러 건축 가능
+<br/>
 ![탭키로건축](https://github.com/user-attachments/assets/b72bf250-af98-40b1-9c00-8b62386393a0)
 <br/>
 <br/>
